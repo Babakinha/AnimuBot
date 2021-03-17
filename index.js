@@ -42,7 +42,7 @@ Client.on('message', (message) => {
             message.reply('Sorry, didnt found this command (￣▽￣*)ゞ');
         }else {
             message.reply('SOMETHING IS WRONG, I CAN FEEL IT...\nCongrats!!!\nYou broke my bot ( ╥ω╥ )\nPlease contact me and maybe i can fix it!\n\n - Babakinha#7938');
-            console.log(`Hey ${message.author.username} Found a "${error.name}" error, while using the ${command} command with this args {${args}}.`);
+            console.log(`Hey ${message.author.username} Found a "${error.message}" error, while using the ${command} command with this args {${args}}.`);
         }
     }
 });
