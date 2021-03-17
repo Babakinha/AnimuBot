@@ -1,0 +1,34 @@
+{
+  "name": "animubot",
+  "version": "1.0.0",
+  "description": "A Anime bot for a server that im in",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Babakinha/AnimuBot.git"
+  },
+  "keywords": [
+    "Discord",
+    "bot",
+    "nodejs",
+    "mal",
+    "MyAnimeList",
+    "anime",
+    "api"
+  ],
+  "author": "Babakinha",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Babakinha/AnimuBot/issues"
+  },
+  "homepage": "https://github.com/Babakinha/AnimuBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
