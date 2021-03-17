@@ -19,7 +19,7 @@ for (const file of commandFiles) {
 
         // set a new item in the Collection
         // with the key as the command name and the value as the exported module
-        Client.commands.set(command.name, command);
+        Client.commands.set(command.name.toLowerCase(), command);
 }
 
 
@@ -42,7 +42,7 @@ Client.on('message', (message) => {
             message.reply('Sorry, didnt found this command (￣▽￣*)ゞ');
         }else {
             message.reply('SOMETHING IS WRONG, I CAN FEEL IT...\nCongrats!!!\nYou broke my bot ( ╥ω╥ )\nPlease contact me and maybe i can fix it!\n\n - Babakinha#7938');
-            console.log(`Hey ${message.author.username} Foun a "${error.name}" error, while using the ${command} command with this args ${args}.`);
+            console.log(`Hey ${message.author.username} Found a "${error.name}" error, while using the ${command} command with this args {${args}}.`);
         }
     }
 });
