@@ -1,9 +1,7 @@
 //Imports
-const Discord = require('discord.js');
 const fs = require('fs');
-const { Prefix } = require('./deafultConfig.json');
-const Client = new Discord.Client();
-Client.commands = new Discord.Collection();
+const pkceChallange = require('pkce-challenge');
+const readline = require('readline');
 
 //Load env vars
 try {
@@ -11,6 +9,36 @@ try {
 }catch(err) { console.log(".env file not found, (*ﾉ▽ﾉ) GOING IN BLIND")}
 
 const token = process.env.TOKEN;
+const malid = process.env.MALID;
+//Discord
+const Discord = require('discord.js');
+const { Prefix } = require('./deafultConfig.json');
+const Client = new Discord.Client();
+Client.commands = new Discord.Collection();
+
+//Mal
+const { Mal, Jinkan } = require('node-myanimelist');
+const auth = Mal.auth(malid);
+const pkce = pkceChallange();
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+const url = auth.getOAuthUrl(pkce.code_challenge);
+console.log("Go Here: " + url);
+let account;
+rl.question('Code: ', async (answer) => {
+    console.log(answer, pkce.code_challenge)
+    const _account = await auth.authorizeWithCode(answer, pkce.code_challenge);
+    account = _account
+    rl.close();
+});
+
+
+
+
 //Load Commands
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -48,6 +76,9 @@ Client.on('message', (message) => {
 
         const args = message.content.slice(Prefix.length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
+
+        //inject MalClient in message
+        message.malclient = account;
 
     try {
         Client.commands.get(command).execute(message, args);
