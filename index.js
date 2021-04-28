@@ -1,7 +1,9 @@
 //Imports
-const Discord = require('discord.js');
 const fs = require('fs');
+
+//Discord
 const { Prefix } = require('./deafultConfig.json');
+const Discord = require('discord.js');
 const Client = new Discord.Client();
 Client.commands = new Discord.Collection();
 

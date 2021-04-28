@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Babakinha/AnimuBot#readme",
   "dependencies": {
+    "@freezegold/anime.js": "^2.0.6-beta",
     "discord.js": "^12.5.1"
   },
   "devDependencies": {
